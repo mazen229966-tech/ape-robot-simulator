@@ -1,0 +1,14 @@
+# Backend runtime dependencies (pinned to the versions used in development).
+# Robotics Toolbox for Python pulls in spatialmath-python, ansitable, progress.
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+numpy==2.4.6
+scipy==1.17.1
+roboticstoolbox-python==1.4.3
+pydantic==2.13.5
+pandas==3.0.5          # trajectory CSV export
+
+# Testing
+pytest==9.1.1
+httpx==0.28.1          # FastAPI TestClient transport
+websockets==17.1       # WebSocket smoke tests

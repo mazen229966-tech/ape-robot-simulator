@@ -1,0 +1,39 @@
+.overview-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 24px;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .overview-hero { grid-template-columns: 1fr; }
+}
+
+.overview-title {
+  font-size: 26px;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+  color: var(--text-0);
+}
+
+.overview-lead {
+  color: var(--text-1);
+  line-height: 1.65;
+  margin-top: 14px;
+  max-width: 560px;
+}
+
+.overview-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-1);
+  line-height: 1.7;
+}
+
+.overview-list li { margin-bottom: 8px; }
+
+.overview-text {
+  color: var(--text-1);
+  line-height: 1.7;
+  margin: 0 0 10px;
+}

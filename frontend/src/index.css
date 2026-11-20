@@ -1,0 +1,318 @@
+/* ============================================================
+   APE 6-DOF Robot Simulator — Dark Engineering design system
+   ============================================================ */
+
+:root {
+  --bg-0: #0b0f14;
+  --bg-1: #10161e;
+  --bg-2: #161f2a;
+  --bg-3: #1d2936;
+  --border: #253241;
+  --border-strong: #33455c;
+  --text-0: #e6edf3;
+  --text-1: #9fb0c3;
+  --text-2: #64778c;
+  --accent: #38bdf8;
+  --accent-dim: #173a52;
+  --green: #34d399;
+  --amber: #fbbf24;
+  --red: #f87171;
+  --violet: #a78bfa;
+  --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --sidebar-w: 232px;
+  --header-h: 54px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  background: var(--bg-0);
+  color: var(--text-0);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+h1, h2, h3, h4 { margin: 0; font-weight: 600; }
+
+.page {
+  padding: 20px 24px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-0);
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  color: var(--text-2);
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+/* ------------------------------- cards ---------------------------------- */
+
+.card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grid { display: grid; gap: 14px; }
+.grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+@media (max-width: 1100px) {
+  .grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .grid.cols-2, .grid.cols-3, .grid.cols-4 { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------ stat cards ------------------------------ */
+
+.stat-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.stat-value {
+  font-family: var(--mono);
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.stat-label {
+  color: var(--text-2);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 4px;
+}
+
+/* ------------------------------- buttons -------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-2);
+  color: var(--text-0);
+  font-size: 13px;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) { background: var(--bg-3); border-color: var(--accent); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn.primary { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.btn.primary:hover:not(:disabled) { background: #1d4a68; }
+.btn.danger { border-color: var(--red); color: var(--red); background: rgba(248, 113, 113, 0.08); }
+.btn.danger:hover:not(:disabled) { background: rgba(248, 113, 113, 0.18); }
+.btn.ghost { background: transparent; }
+.btn.sm { padding: 5px 10px; font-size: 12px; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* -------------------------------- inputs -------------------------------- */
+
+.input, select.input {
+  background: var(--bg-0);
+  border: 1px solid var(--border);
+  color: var(--text-0);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: var(--mono);
+  width: 100%;
+}
+
+.input:focus { outline: none; border-color: var(--accent); }
+.input.invalid { border-color: var(--red); }
+
+.field-label {
+  display: block;
+  color: var(--text-1);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 42px 1fr 34px;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ------------------------------- tables --------------------------------- */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 12.5px;
+}
+
+.table th {
+  text-align: left;
+  color: var(--text-2);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-0);
+}
+
+.table tr:hover td { background: rgba(56, 189, 248, 0.04); }
+
+/* ------------------------------- badges --------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid;
+}
+
+.badge .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.badge.ready   { color: var(--green); border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.08); }
+.badge.running { color: var(--accent); border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.08); }
+.badge.stopped { color: var(--amber); border-color: rgba(251, 191, 36, 0.4); background: rgba(251, 191, 36, 0.08); }
+.badge.error   { color: var(--red); border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.08); }
+.badge.info    { color: var(--text-1); border-color: var(--border-strong); background: var(--bg-2); }
+
+/* ------------------------------ progress -------------------------------- */
+
+.progress-track {
+  height: 6px;
+  border-radius: 4px;
+  background: var(--bg-3);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  transition: width 0.1s linear;
+}
+
+/* ------------------------------- messages ------------------------------- */
+
+.msg { padding: 10px 12px; border-radius: 7px; font-size: 13px; border: 1px solid; }
+.msg.error { color: var(--red); border-color: rgba(248,113,113,0.35); background: rgba(248,113,113,0.07); }
+.msg.ok { color: var(--green); border-color: rgba(52,211,153,0.35); background: rgba(52,211,153,0.07); }
+.msg.info { color: var(--text-1); border-color: var(--border-strong); background: var(--bg-2); }
+.msg.working { color: var(--accent); border-color: rgba(56,189,248,0.35); background: rgba(56,189,248,0.07); }
+
+/* ------------------------------- sliders -------------------------------- */
+
+input[type='range'] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--bg-3);
+  outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg-0);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg-0);
+}
+
+/* ------------------------------ misc utils ------------------------------ */
+
+.mono { font-family: var(--mono); }
+.muted { color: var(--text-2); }
+.accent { color: var(--accent); }
+.mt { margin-top: 14px; }
+.mb { margin-bottom: 14px; }
+.spread { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.note {
+  font-size: 12px;
+  color: var(--amber);
+  border: 1px dashed rgba(251, 191, 36, 0.4);
+  background: rgba(251, 191, 36, 0.05);
+  border-radius: 7px;
+  padding: 8px 12px;
+}
+
+kbd {
+  font-family: var(--mono);
+  background: var(--bg-3);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 12px;
+}
+
+.formula {
+  font-family: var(--mono);
+  background: var(--bg-0);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text-1);
+  font-size: 13px;
+  overflow-x: auto;
+  white-space: pre;
+}

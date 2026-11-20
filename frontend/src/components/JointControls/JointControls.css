@@ -1,0 +1,30 @@
+.joint-controls { display: flex; flex-direction: column; gap: 12px; }
+
+.joint-row {
+  display: grid;
+  grid-template-columns: 34px 1fr 92px 18px;
+  gap: 10px;
+  align-items: center;
+}
+
+.joint-name {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.joint-slider { display: flex; flex-direction: column; gap: 3px; }
+
+.joint-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-2);
+}
+
+.joint-input { text-align: right; }
+.joint-unit { color: var(--text-2); font-size: 12px; }
+
+@media (max-width: 640px) {
+  .joint-row { grid-template-columns: 30px 1fr 74px 14px; }
+}
